@@ -7,7 +7,7 @@ df = read_gtf(sys.argv[1])
 gene_df = df[['gene_name', 'seqname', 'start', 'end']]
 gene_df.columns = ['geneName', 'chr', 'startPos', 'endPos']
 
-gtf2json = gene_df.to_json(orient="records",force_ascii=False)
+gtf2json = gene_df.to_dict(orient="records")
 
-with open('Homo_sapiens.GRCh37.75.json', 'w') as f1:
-    json.dump(gtf2json, f1)                
+with open('Homo_sapiens.GRCh37.75.json', 'w') as f:
+    json.dump(gtf2json, f)                
